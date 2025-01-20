@@ -13,7 +13,8 @@ import pickle
 import numpy as np
 
 # loading the saved model
-loaded_model = pickle.load(open('/content/trained_model.sav', 'rb'))
+loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+
 
 def diabetes_prediction(input_data):
 
