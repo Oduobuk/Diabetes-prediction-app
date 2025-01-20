@@ -15,7 +15,7 @@ def load_model_from_github(url):
         return None
 
 # Replace with your actual raw URL of the trained model
-model_url = 'https://github.com/Oduobuk/Diabetes-prediction-app/blob/main/trained_model.sav'
+model_url = 'https://github.com/Oduobuk/Diabetes-prediction-app/raw/refs/heads/main/trained_model.sav'
 loaded_model = load_model_from_github(model_url)
 
 def diabetes_prediction(input_data):
