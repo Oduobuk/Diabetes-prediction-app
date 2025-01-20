@@ -1,9 +1,22 @@
 import streamlit as st
 import pickle
 import numpy as np
+import requests
 
-# loading the saved model
-loaded_model = pickle.load(open('Diabetes-prediction-app/trained_model.sav', 'rb'))
+# Function to load the model from GitHub
+def load_model_from_github(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open('trained_model.sav', 'wb') as f:
+            f.write(response.content)
+        return pickle.load(open('trained_model.sav', 'rb'))
+    else:
+        st.error("Error loading model from GitHub. Please check the URL.")
+        return None
+
+# Replace with your actual raw URL of the trained model
+model_url = 'https://github.com/Oduobuk/Diabetes-prediction-app/blob/main/trained_model.sav'
+loaded_model = load_model_from_github(model_url)
 
 def diabetes_prediction(input_data):
     # Convert input data to numpy array
